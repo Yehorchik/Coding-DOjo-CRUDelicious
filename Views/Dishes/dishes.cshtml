@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Dishes</title>
+</head>
+<body>
+    <h1><a href="/">Chefs</a> | Dishes</h1>
+    <a href="/dishes/new">Add a Dish</a>
+    <hr>
+     <table class="table table-dark">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Chef</th>
+                <th scope="col">Tastiness</th>
+                <th scope="col">Calories</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                @foreach(var x in ViewBag.Dishes)
+                {
+                    <tr>
+                        <th scope="row">@x.Name</th>
+                        <td>@x.Chef.FirstName  @x.Chef.LastName</td>
+                        <td>@x.Tastiness</td>
+                        <td>@x.Calories</td>
+                    </tr>
+                }
+
+            }
+        </tbody>
+    </table>
+</body>
+</html>

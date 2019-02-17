@@ -1,0 +1,36 @@
+@model Dishes
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Add Dish</title>
+</head>
+<body>
+    <a href="/dishes">Home</a>
+    <form asp-controller="Dishes" asp-action="CreateDish" method="POST">
+            <span asp-validation-for="Name"></span>
+            <h1>Name: <input type="text" asp-for="Name"> </h1>
+            <h1>Tastiness : <select asp-for="Tastiness" > 
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select></h1>
+            <h1>Calories : <input type="text" asp-for="Calories"> </h1>
+            <h1>Description : <input type="text" asp-for="Description"> </h1>
+            <h1>Chef : <select asp-for="ChefId" >
+                @{
+                    foreach(var x in ViewBag.Chefs)
+                    {
+                       <option value="@x.ChefId">@x.FirstName  @x.LastName</option>
+                    }
+                }
+            </select></h1>
+            <input type="submit" value ="Add Dish">
+    </form>
+</body>
+</html>
